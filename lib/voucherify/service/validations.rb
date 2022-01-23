@@ -13,6 +13,10 @@ module Voucherify
         @client.post("/vouchers/#{ERB::Util.url_encode(code)}/validate", context.to_json)
       end
 
+      def validate_bulk_vouchers(params)
+        @client.post('/validations', params.to_json)
+      end
+
       def validate(code, context = {})
         if code.is_a? Hash
           context = code
